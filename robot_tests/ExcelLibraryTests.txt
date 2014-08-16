@@ -1,0 +1,7 @@
+*** Settings ***
+Library           ../ExcelLibrary.py
+
+*** Test Cases ***
+Keyword Test
+    ${result}    My Keyword    Hello World
+    Log    ${result}
