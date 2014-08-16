@@ -1,7 +1,7 @@
 *** Settings ***
-Library           ../ExcelLibrary.py
+Library           ../ExcelXLibrary.py
 
 *** Test Cases ***
-Keyword Test
+My Keyword Test
     ${result}    My Keyword    Hello World
     Log    ${result}

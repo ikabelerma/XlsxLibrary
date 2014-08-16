@@ -1,7 +1,7 @@
 __author__ = 'ikabelerma'
 
 
-class ExcelLibrary:
+class ExcelXLibrary:
 
     ROBOT_LIBRARY_SCOPE = 'TEST SUITE'
 
