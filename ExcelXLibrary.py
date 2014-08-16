@@ -1,7 +1,6 @@
 from openpyxl import load_workbook
 
 __author__ = 'Ika Belerma'
-__all__ = ['open_excel_file', 'get_cell_value_by_sheet_name', 'get_cell_value_of_active_sheet', 'get_sheet_names']
 
 
 class ExcelXLibrary:
@@ -29,7 +28,7 @@ class ExcelXLibrary:
         This example returns the value of cell "A1" from "Sheet 1" from the xls file "Book1.xls".
         """
         workbook_sheet = workbook.get_sheet_by_name(sheet_name)
-        cell_value = self.return_cell_value(workbook_sheet, cell_name)
+        cell_value = self._return_cell_value(workbook_sheet, cell_name)
         return cell_value
 
     def get_cell_value_of_active_sheet(self, workbook, cell_name):
@@ -41,7 +40,7 @@ class ExcelXLibrary:
         This example returns the value of cell "A1" from "Sheet 1" from the xls file "Book1.xls".
         """
         workbook_sheet = workbook.get_active_sheet()
-        cell_value = self.return_cell_value(workbook_sheet, cell_name)
+        cell_value = self._return_cell_value(workbook_sheet, cell_name)
         return cell_value
 
     def get_sheet_names(self, workbook):
@@ -61,6 +60,6 @@ class ExcelXLibrary:
         return sheet_names
 
     @staticmethod
-    def return_cell_value(workbook_sheet, cell_name):
+    def _return_cell_value(workbook_sheet, cell_name):
         cell_value = workbook_sheet.cell(cell_name).value
         return cell_value
