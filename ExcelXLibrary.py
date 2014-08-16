@@ -1,22 +1,49 @@
 from openpyxl import load_workbook
 
-__author__ = 'ikabelerma'
+__author__ = 'Ika Belerma'
+__all__ = ['open_excel_file', 'get_cell_value_by_sheet_name', 'get_cell_value_of_active_sheet']
 
 
 class ExcelXLibrary:
 
     ROBOT_LIBRARY_SCOPE = 'TEST SUITE'
 
-    def open_excel_file(self, path):
-        workbook = load_workbook(path)
+    def __init__(self):
+
+    def open_excel_file(self, path_to_excel_file):
+        """Returns a workbook instance from the an xls file provided.
+        Other keywords will ask for an instantiated workbook as an argument.
+
+        |${workbook}|Open Excel File|Book1.xls|
+        """
+        workbook = load_workbook(path_to_excel_file)
         return workbook
 
     def get_cell_value_by_sheet_name(self, workbook, sheet_name, cell_name):
+        """Returns the value of the cell indicated, given the sheet name.
+
+        |${workbook}|Open Excel File|Book1.xls|
+        |${A1}|Get Cell Value By Sheet Name|${workbook}|Sheet1|A1|
+
+        This example returns the value of cell "A1" from "Sheet 1" from the xls file "Book1.xls".
+        """
         workbook_sheet = workbook.get_sheet_by_name(sheet_name)
-        cell_value = workbook_sheet.cell(cell_name).value
+        cell_value = self.return_cell_value(workbook_sheet, cell_name)
         return cell_value
 
     def get_cell_value_of_active_sheet(self, workbook, cell_name):
+        """Returns the value of the cell indicated of the currently active sheet.
+
+        |${workbook}|Open Excel File|Book1.xls|
+        |${A1}|Get Cell Value Of Active Sheet|${workbook}|A1|
+
+        This example returns the value of cell "A1" from "Sheet 1" from the xls file "Book1.xls".
+        """
         workbook_sheet = workbook.get_active_sheet()
+        cell_value = self.return_cell_value(workbook_sheet, cell_name)
+        return cell_value
+
+    @staticmethod
+    def return_cell_value(workbook_sheet, cell_name):
         cell_value = workbook_sheet.cell(cell_name).value
         return cell_value
