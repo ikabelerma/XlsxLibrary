@@ -14,7 +14,8 @@ class ExcelXLibrary:
         """Returns a workbook instance from the an xls file provided.
         Other keywords will ask for an instantiated workbook as an argument.
 
-        |${workbook}|Open Excel File|Book1.xls|
+        Example:
+        | ${workbook} | Open Excel File | Book1.xls |
         """
         workbook = load_workbook(path_to_excel_file)
         return workbook
@@ -22,8 +23,9 @@ class ExcelXLibrary:
     def get_cell_value_by_sheet_name(self, workbook, sheet_name, cell_name):
         """Returns the value of the cell indicated, given the sheet name.
 
-        |${workbook}|Open Excel File|Book1.xls|
-        |${A1}|Get Cell Value By Sheet Name|${workbook}|Sheet1|A1|
+        Example:
+        | ${workbook} | Open Excel File | Book1.xls |
+        | ${A1} | Get Cell Value By Sheet Name | ${workbook} | Sheet1 | A1 |
 
         This example returns the value of cell "A1" from "Sheet 1" from the xls file "Book1.xls".
         """
@@ -34,8 +36,9 @@ class ExcelXLibrary:
     def get_cell_value_of_active_sheet(self, workbook, cell_name):
         """Returns the value of the cell indicated of the currently active sheet.
 
-        |${workbook}|Open Excel File|Book1.xls|
-        |${A1}|Get Cell Value Of Active Sheet|${workbook}|A1|
+        Example:
+        | ${workbook} | Open Excel File | Book1.xls |
+        | ${A1} | Get Cell Value Of Active Sheet | ${workbook} | A1 |
 
         This example returns the value of cell "A1" from "Sheet 1" from the xls file "Book1.xls".
         """
@@ -44,17 +47,18 @@ class ExcelXLibrary:
         return cell_value
 
     def get_sheet_names(self, workbook):
-        """Returns the names of the sheets of th workbook provided.
+        """Returns the names of the sheets of the workbook provided.
 
-        |${workbook}|Open Excel File|Book1.xls|
-        |${sheet_names}|Get Sheet Names|${workbook}|
+        Example:
+        | ${workbook} | Open Excel File | Book1.xls |
+        | ${sheet_names} | Get Sheet Names | ${workbook} |
 
         Given Book1.xls has three sheets with names Sheet1, Sheet2 and Sheet3:
-
-        |Log|${sheet_names}|# ['Sheet1', 'Sheet2', 'Sheet3']|
-        |Log|${sheet_names[0]}|# Sheet1|
-        |Log|${sheet_names[1]}|# Sheet2|
-        |Log|${sheet_names[2]}|# Sheet3|
+        
+        | Log | ${sheet_names} | # ['Sheet1', 'Sheet2', 'Sheet3'] |
+        | Log | ${sheet_names[0]} | # Sheet1 |
+        | Log | ${sheet_names[1]} | # Sheet2 |
+        | Log | ${sheet_names[2]} | # Sheet3 |
         """
         sheet_names = workbook.get_sheet_names()
         return sheet_names
