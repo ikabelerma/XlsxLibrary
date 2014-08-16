@@ -2,6 +2,16 @@
 Library           ../ExcelXLibrary.py
 
 *** Test Cases ***
-My Keyword Test
-    ${result}    My Keyword    Hello World
-    Log    ${result}
+Open an Excel File
+    ${newExcelFile}    Open Excel File    excel_files/HelloWorldWorkbook.xlsx
+    Log    ${newExcelFile}
+
+Get Cell Value by Sheet Name
+    ${newExcelFile}    Open Excel File    excel_files/HelloWorldWorkbook.xlsx
+    ${cellA1}    Get Cell Value by Sheet Name    ${newExcelFile}    Sheet1    A1
+    Should Be Equal As Strings    Hello World    ${cellA1}
+
+Get Cell Value of Active Sheet
+    ${newExcelFile}    Open Excel File    excel_files/HelloWorldWorkbook.xlsx
+    ${cellA1}    Get Cell Value of Active Sheet    ${newExcelFile}    A1
+    Should Be Equal As Strings    Hello World    ${cellA1}
