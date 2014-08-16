@@ -1,7 +1,7 @@
 from openpyxl import load_workbook
 
 __author__ = 'Ika Belerma'
-__all__ = ['open_excel_file', 'get_cell_value_by_sheet_name', 'get_cell_value_of_active_sheet']
+__all__ = ['open_excel_file', 'get_cell_value_by_sheet_name', 'get_cell_value_of_active_sheet', 'get_sheet_names']
 
 
 class ExcelXLibrary:
@@ -9,6 +9,7 @@ class ExcelXLibrary:
     ROBOT_LIBRARY_SCOPE = 'TEST SUITE'
 
     def __init__(self):
+        self.data = []
 
     def open_excel_file(self, path_to_excel_file):
         """Returns a workbook instance from the an xls file provided.
@@ -42,6 +43,22 @@ class ExcelXLibrary:
         workbook_sheet = workbook.get_active_sheet()
         cell_value = self.return_cell_value(workbook_sheet, cell_name)
         return cell_value
+
+    def get_sheet_names(self, workbook):
+        """Returns the names of the sheets of th workbook provided.
+
+        |${workbook}|Open Excel File|Book1.xls|
+        |${sheet_names}|Get Sheet Names|${workbook}|
+
+        Given Book1.xls has three sheets with names Sheet1, Sheet2 and Sheet3:
+
+        |Log|${sheet_names}|# ['Sheet1', 'Sheet2', 'Sheet3']|
+        |Log|${sheet_names[0]}|# Sheet1|
+        |Log|${sheet_names[1]}|# Sheet2|
+        |Log|${sheet_names[2]}|# Sheet3|
+        """
+        sheet_names = workbook.get_sheet_names()
+        return sheet_names
 
     @staticmethod
     def return_cell_value(workbook_sheet, cell_name):
