@@ -18,7 +18,7 @@ Since this is not a complete python package yet, there is no installation needed
 
     pip install openpyxl
 
-Just import XlsLibrary as a normal user library in your project. More information on importing user libraries in the `Robot Framework User Guide`_.
+Just import XlsxLibrary as a normal user library in your project. More information on importing user libraries in the `Robot Framework User Guide`_.
 
 ::
 
