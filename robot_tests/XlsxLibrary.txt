@@ -1,5 +1,5 @@
 *** Settings ***
-Library           ../ExcelXLibrary.py
+Library           ../XlsxLibrary.py
 
 *** Test Cases ***
 Open an Excel File

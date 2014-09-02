@@ -3,7 +3,7 @@ from openpyxl import load_workbook
 __author__ = 'Ika Belerma'
 
 
-class ExcelXLibrary:
+class XlsxLibrary:
 
     ROBOT_LIBRARY_SCOPE = 'TEST SUITE'
 
